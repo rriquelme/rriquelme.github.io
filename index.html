@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link rel="preload" href="./assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <title>Roberto Riquelme</title>
     <link rel="shortcut icon" href="./assets/images/r.ico" type="image/x-icon">
     <style>
+        /* Inter (SIL OFL 1.1, see assets/fonts/OFL.txt) — self-hosted so no visitor
+           data is sent to a third-party font CDN. Variable font covering weights 400-800. */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400 800;
+            font-display: swap;
+            src: url('./assets/fonts/inter-latin.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        .icon {
+            width: 1em;
+            height: 1em;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
         a:link {
             color: #999999;
         }
@@ -47,11 +64,10 @@
             object-fit: cover;
         }
         .avatar.no-photo::after {
-            content: '\f007';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            font-size: 60px;
-            color: #ffffff;
+            content: '';
+            width: 60px;
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2%22/%3E%3Ccircle cx=%2212%22 cy=%227%22 r=%224%22/%3E%3C/svg%3E") center / contain no-repeat;
         }
         .header h1 {
             margin-bottom: 5px;
@@ -80,9 +96,11 @@
             padding: 5px 14px;
             font-size: 14px;
         }
-        .social-icons {
+        a.social-icons {
+            display: inline-flex;
             padding: 5px;
             font-size: 22px;
+            color: #000000;
         }
         .social-list {
             display: flex;
@@ -149,17 +167,18 @@
             justify-content: center;
             background-color: #ffffff;
             border: 2px solid #e0e0e0;
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            font-size: 15px;
-            color: #888888;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 18px 18px;
             z-index: 2;
         }
         .timeline-item-work::after {
-            content: '\f0b1';
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23888888%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%222%22 y=%227%22 width=%2220%22 height=%2214%22 rx=%222%22 ry=%222%22/%3E%3Cpath d=%22M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16%22/%3E%3C/svg%3E");
         }
         .timeline-item-study::after {
-            content: '\f19d';
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23888888%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z%22/%3E%3Cpath d=%22M22 10v6%22/%3E%3Cpath d=%22M6 12.5V16a6 3 0 0 0 12 0v-3.5%22/%3E%3C/svg%3E");
         }
         .timeline-content {
             position: relative;
@@ -198,6 +217,13 @@
 </head>
 <body>
 
+    <!-- Icon sprite: Feather Icons (MIT, https://feathericons.com). -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="icon-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+        <symbol id="icon-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+        <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+    </svg>
+
     <div class="header">
         <div class="avatar">
             <img src="./assets/images/profile.jpg" alt="Roberto Riquelme" onerror="this.style.display='none'; this.parentElement.classList.add('no-photo')">
@@ -216,9 +242,9 @@
             <li>CI/CD</li>
         </ul>
         <div class="social-list">
-            <a class="social-icons" href="https://www.github.com/rriquelme" target="_blank"><i class="fab fa-github" style="color: black;"></i></a>
-            <a class="social-icons" href="https://www.linkedin.com/in/robertriquelmesaez" target="_blank"><i class="fab fa-linkedin" style="color: black;"></i></a>
-            <a class="social-icons" href="https://www.instagram.com/rers92" target="_blank"><i class="fab fa-instagram" style="color: black;"></i></a>
+            <a class="social-icons" href="https://www.github.com/rriquelme" target="_blank"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg></a>
+            <a class="social-icons" href="https://www.linkedin.com/in/robertriquelmesaez" target="_blank"><svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg></a>
+            <a class="social-icons" href="https://www.instagram.com/rers92" target="_blank"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg></a>
         </div>
         <div class="contact-information">
             <h2>Contact Information</h2>
